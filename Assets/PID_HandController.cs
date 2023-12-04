@@ -62,23 +62,8 @@ public class PID_HandController : MonoBehaviour
 
     private void rotation()
     {
-        float kp = (6f * rotationFrequency) * (6f * rotationFrequency) * 0.25f;
-        float kd = 4.5f * rotationFrequency * rotationDamping;
-        float g = 1 / (1 + kd * Time.fixedDeltaTime + kp * Time.fixedDeltaTime * Time.fixedDeltaTime);
-        float ksg = kp * g;
-        float kdg = (kd + kp * Time.fixedDeltaTime) * g;
-        Quaternion q = target.rotation * Quaternion.Inverse(transform.rotation);
-        if (q.w < 0) {
-            q.x = -q.x;
-            q.y = -q.y;
-            q.z = -q.z;
-            q.w = -q.w;
-        }
-        q.ToAxisAngle(out Vector3 axis,out float angle);
-        axis.Normalize();
-        axis *= Mathf.Deg2Rad;
-        Vector3 torque = ksg * axis * angle + rb.angularVelocity * kdg;
-        rb.AddTorque(torque, ForceMode.Acceleration);
+        if (!isCollidning)
+            transform.rotation = target.rotation;
 
     }
 
