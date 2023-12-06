@@ -2,12 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 /// <summary>
 /// inspried by: https://www.youtube.com/watch?v=5D2bN7xL5us
 /// and: https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller
 /// </summary>
 public class PID_HandController : MonoBehaviour
 {
+    [Header("Vibration")]
+    [Range(0,1)]
+    [SerializeField] float intensity;
+    [SerializeField] float duration;
+    [SerializeField] XRBaseController controller;
+    [Header("Movement")]
     [SerializeField] float frequency = 50f;
     [SerializeField] float damping = 1f;
     [SerializeField] Transform target;
@@ -81,6 +88,8 @@ public class PID_HandController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isCollidning= true;
+        if (intensity > 0)
+            controller.SendHapticImpulse(intensity,duration);
     }
 
     private void OnCollisionExit(Collision collision)
