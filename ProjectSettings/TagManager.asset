@@ -7,7 +7,14 @@ TagManager:
   - Anchor
   - Floor
   - Target
+<<<<<<< Updated upstream
   - SpaceHand
+=======
+  - WP1
+  - WP2
+  - WP3
+  - WP4
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
