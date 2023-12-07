@@ -6,11 +6,12 @@ using UnityEngine;
 public class ballThrowing : MonoBehaviour
 {
     [SerializeField]
-    Transform spawnpoint;
+    public Transform spawnpoint;
     [SerializeField]
-    ThrowingMinigame throwingMinigame;
+    public ThrowingMinigame throwingMinigame;
     [SerializeField]
     Rigidbody rb;
+    bool active = true;
 
 
     private void Start()
@@ -19,18 +20,38 @@ public class ballThrowing : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor")
+        if (collision.gameObject.tag == "Floor" && active && !throwingMinigame.isdone)
         {
             transform.position = spawnpoint.position;
+            rb.velocity = Vector3.zero;
+            
+
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Floor" && active)
+        {
+            transform.position = spawnpoint.position;
+            
+            //rb.velocity = Vector3.zero;
+
 
         }
         else if (collision.gameObject.tag == "Target")
         {
-            transform.position = spawnpoint.position;
+
             throwingMinigame.addAPoint();
             collision.transform.position = throwingMinigame.getRandimPost();
-            rb.velocity = Vector3.zero;
+            this.enabled = false;
+            active = false;
+            rb.velocity= Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
+    }
+
+    public void startGame() {
+        throwingMinigame.startGame();
     }
 }
