@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit;
 public class ThrowingMinigame : MonoBehaviour
 {
 
@@ -15,10 +16,17 @@ public class ThrowingMinigame : MonoBehaviour
     bool gameRunning = false;
     [SerializeField]
     Transform[] TargetPoints;
-
+    [SerializeField]
+    Transform[] spawnPostions;
+    [SerializeField]
+    Transform bagContainers;
     public float pointsValue = 0;
     public float maxPoints = 10;
     public float time = 0;
+
+    [SerializeField]
+    GameObject throwingObj;
+    public bool isdone = false;
 
     // Update is called once per frame
     void Update()
@@ -26,8 +34,6 @@ public class ThrowingMinigame : MonoBehaviour
         if (gameRunning) {
             time += Time.deltaTime;
             display(time);
-
-
         }
     }
 
@@ -52,12 +58,26 @@ public class ThrowingMinigame : MonoBehaviour
     }
 
     public void addAPoint() {
-        pointsValue++;
-        if (pointsValue >= maxPoints) {
-            gameRunning = false;
-            timerScreen.SetActive(false);
-            EndScreen.SetActive(true);
-            showTime(EndTime, time);
+        if (!isdone)
+        {
+            pointsValue++;
+            if (pointsValue >= maxPoints)
+            {
+                gameRunning = false;
+                timerScreen.SetActive(false);
+                EndScreen.SetActive(true);
+                showTime(EndTime, time);
+                isdone = true;
+                bagContainers.gameObject.SetActive(false);
+            }
+            else
+            {
+                var obj = Instantiate(throwingObj, spawnPostions[(int)Random.Range(0, spawnPostions.Length)].position, Quaternion.identity);
+                obj.GetComponent<ballThrowing>().throwingMinigame = this;
+                obj.GetComponent<ballThrowing>().spawnpoint = spawnPostions[(int)Random.Range(0, spawnPostions.Length)];
+                obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                obj.transform.parent = bagContainers;
+            }
         }
     }
 }
