@@ -9,10 +9,12 @@ public class Countdown : MonoBehaviour
 {
     public Button startButton;
     public TMP_Text infoText;
+    public TMP_Text readingTXT;
     private int countdownValue = 10;
     private List<float> baselineReadings;
     private bool isBaselineEstablished = false;
     private float baseline = 0;
+    float currentReading;
 
     SerialPort dataStream = new SerialPort("COM3", 9600);
     private string receivedString;
@@ -21,6 +23,10 @@ public class Countdown : MonoBehaviour
     {
         startButton.onClick.AddListener(TaskOnClick);
         OpenSerialPort();
+    }
+
+    void FixedUpdate(){
+        ContinuousReadings();
     }
 
     void TaskOnClick()
@@ -51,20 +57,20 @@ public class Countdown : MonoBehaviour
         isBaselineEstablished = true;
         infoText.text = "Baseline established: " + baseline.ToString("F2");
         countdownValue = 10; // Reset the countdown for potential future use
-        StartCoroutine(ContinuousReadings());
+        
     }
 
-    IEnumerator ContinuousReadings()
+    void ContinuousReadings()
     {
-        while (true)
-        {
-            float currentReading = GetReadingFromArduino();
+        
+        
+            currentReading = GetReadingFromArduino();
             if (currentReading != -1) // Check if reading is valid
             {
-                infoText.text = "Current Reading: " + currentReading.ToString("F2") + " | Baseline: " + baseline.ToString("F2");
+                readingTXT.text = "Current Reading: " + currentReading.ToString("F2") + " | Baseline: " + baseline.ToString("F2");
+                Debug.Log("Current Reading from Arduino: " + currentReading); 
             }
-            yield return new WaitForSeconds(1);
-        }
+        
     }
 
     float GetReadingFromArduino()
