@@ -14,6 +14,9 @@ public class PID_HandController : MonoBehaviour
     [SerializeField] float intensity;
     [SerializeField] float duration;
     [SerializeField] XRBaseController controller;
+    [Header("Hand Visual")]
+    [SerializeField]
+    GameObject handvisual;
     [Header("Movement")]
     [SerializeField] float frequency = 50f;
     [SerializeField] float damping = 1f;
@@ -44,9 +47,13 @@ public class PID_HandController : MonoBehaviour
         movement();
         //rotation();
         if(isCollidning)hookslaw();
+        updateHandVisual();
 
     }
-
+    public void updateHandVisual() {
+        handvisual.transform.position = gameObject.transform.position;
+        handvisual.transform.rotation = target.transform.rotation;
+    }
     private void hookslaw()
     {
         Vector3 displacementFromResting = transform.position - target.position;
