@@ -1,83 +1,122 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WrenchGame : MonoBehaviour
 {
-    public Transform wrenchTransform; // Reference to the wrench's transform
+    public Transform jawTransform; // Reference to the jaw's transform
     public Transform[] boltTransforms; // Array of bolt transforms
-    public float rotationThreshold = 100f; // Rotation threshold for 10 degrees
-    public float proximityThreshold = 0.2f; // Distance threshold for the wrench and bolts to be considered in proximity
+    public float rotationThreshold = 1200f; // Rotation threshold for 10 degrees
+    public float proximityThreshold = 0.2f; // Distance threshold for the jaw of the wrench and bolts to be considered in proximity
 
     private float[] totalRotations; // Array to track total rotation for each bolt
-    private bool[] pointsGenerated; // Array to track whether points have been generated for each bolt
+    private int points = 0; // Counter for points earned
+    public int pointsNeededForSceneLoad = 6; // Adjust the number of points needed for scene load
+
+    public Text pointsText; // Reference to the Text component for displaying points
+    public Canvas pointsCanvas; // Reference to the Canvas component for positioning
+    public AudioClip pointSound; // Sound to play when a point is gained
+    public GameObject particlePrefab; // Particle system to instantiate when a point is gained
+
+
+
 
     void Start()
     {
         // Initialize arrays
         totalRotations = new float[boltTransforms.Length];
-        pointsGenerated = new bool[boltTransforms.Length];
+
+        // Initialize UI elements
+        if (pointsCanvas != null)
+        {
+            pointsCanvas.worldCamera = Camera.main;
+        }
     }
 
     void Update()
     {
-        // Iterate through each bolt
+
         for (int i = 0; i < boltTransforms.Length; i++)
         {
-            // Check if the wrench and bolt are in proximity
-            if (Vector3.Distance(wrenchTransform.position, boltTransforms[i].position) <= proximityThreshold)
+            // Check if the bolt has been destroyed
+            if (boltTransforms[i] == null)
             {
-                // Calculate the rotation delta between the wrench and the bolt
-                float rotationDelta = Vector3.Angle(wrenchTransform.forward, boltTransforms[i].forward);
+                continue;
+            }
 
-                // Check if the wrench is rotating clockwise or counterclockwise
-                Vector3 crossProduct = Vector3.Cross(wrenchTransform.forward, boltTransforms[i].forward);
+            // Check if the wrench is close enough to the bolt
+            if (Vector3.Distance(jawTransform.position, boltTransforms[i].position) <= proximityThreshold)
+            {
+                // Calculate the angle between the wrench and the bolt
+                float rotationDelta = Vector3.Angle(jawTransform.forward, boltTransforms[i].forward);
+                Vector3 crossProduct = Vector3.Cross(jawTransform.forward, boltTransforms[i].forward);
+
+                // If the wrench is rotating in the opposite direction, make the rotation delta negative
                 if (crossProduct.y < 0)
                 {
-                    rotationDelta *= -1; // Reverse the rotation if it's counterclockwise
+                    rotationDelta *= -1;
                 }
 
-                // Update the total rotation for the current bolt
+                // Add the absolute value of the rotation delta to the total rotation for this bolt
                 totalRotations[i] += Mathf.Abs(rotationDelta);
 
-                // Check if enough rotation has occurred for the current bolt
-                if (totalRotations[i] >= rotationThreshold && !pointsGenerated[i])
+                // If the total rotation for this bolt is greater than or equal to the rotation threshold, generate a point
+                if (totalRotations[i] >= rotationThreshold)
                 {
-                    // Generate a point for the current bolt
                     GeneratePoint(i);
-
-                    // Set a flag to ensure points are not generated multiple times for the current bolt
-                    pointsGenerated[i] = true;
                 }
             }
             else
             {
-                // Reset the rotation tracking when the wrench and bolt are not in proximity for the current bolt
+                // If the wrench is not close enough to the bolt, reset the total rotation for this bolt
                 totalRotations[i] = 0f;
-                pointsGenerated[i] = false;
             }
         }
+
+        // If the total points are greater than or equal to the points needed for scene load, load the next scene
+        if (points >= pointsNeededForSceneLoad)
+        {
+         StartCoroutine(LoadNextSceneWithDelay());
+         pointsText.text = "Good work: " + points;
+        }
+
+        IEnumerator LoadNextSceneWithDelay()
+        // wait 5 seconds
+        {
+         yield return new WaitForSeconds(5);
+         LoadNextScene();
+        }
+
+
+        // Update the points text
+        if (pointsText != null)
+        {
+            pointsText.text = "Bolts loosened: " + points;
+        }
+
     }
 
     void GeneratePoint(int boltIndex)
     {
-        // Add your logic here to generate a point when enough rotation occurs for the specified bolt
-        Debug.Log($"10 degrees of rotation completed for bolt {boltIndex + 1}! Point generated!");
+    // Increment the points counter
+    points++;
 
-        // Instantiate a particle effect at the position of the bolt
-        InstantiateParticleEffect(boltTransforms[boltIndex].position);
+    // Play the point sound
+    AudioSource.PlayClipAtPoint(pointSound, transform.position);
 
-        // You can add additional logic here for scoring or other actions
+    // Instantiate the particle prefab at the position of the bolt
+    Instantiate(particlePrefab, boltTransforms[boltIndex].position, Quaternion.identity);
+
+    // Destroy the bolt game object
+    Destroy(boltTransforms[boltIndex].gameObject);
     }
 
-    void InstantiateParticleEffect(Vector3 position)
-    {
-        // Replace "YourParticlePrefab" with the actual particle effect prefab you want to use
-        GameObject particleEffect = Instantiate(Resources.Load<GameObject>("ParticlePrefab"), position, Quaternion.identity);
 
-        // Destroy the particle effect after a certain duration (adjust as needed)
-        Destroy(particleEffect, 2f);
+    void LoadNextScene()
+    {
+        // Load the next scene
+        SceneManager.LoadScene("Scenes/Movement/Controller with all features");
     }
 }
-
-
