@@ -14,6 +14,6 @@ public class VignetteController : MonoBehaviour
     void Update()
     {
         // Set the vignette size to the public variable value
-        tunnelingVignetteController.vignetteSize = vignetteSize;
+        //tunnelingVignetteController.vignetteSize = vignetteSize;
     }
 }
