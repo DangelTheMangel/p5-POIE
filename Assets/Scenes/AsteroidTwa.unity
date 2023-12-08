@@ -2348,13 +2348,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a5e2d5b022d2943be5d45765b8e28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidspawner: {fileID: 0}
-  ConveyerBelt: {fileID: 0}
-  startButton: {fileID: 0}
-  spawner: {fileID: 0}
-  timerText: {fileID: 0}
-  score: {fileID: 0}
-  Announcer: {fileID: 0}
+  asteroidspawner: {fileID: 1719792295}
+  ConveyerBelt: {fileID: 1386813492}
+  startButton: {fileID: 470497249}
+  spawner: {fileID: 1719792293}
+  timerText: {fileID: 809357491}
+  score: {fileID: 134209034}
+  Announcer: {fileID: 399316172}
   messageInterval: 2
 --- !u!64 &955836245
 MeshCollider:
