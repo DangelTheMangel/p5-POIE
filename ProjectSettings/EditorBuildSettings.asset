@@ -14,15 +14,21 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/CleanFilter/CleanFilter.unity
     guid: 2d8f3fe7075d3474892d3c2a15d7de76
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Movement/Controller with all features.unity
     guid: 8a616b6c9ae6be348a0176657ac67824
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CleanFilter/Ball Game.unity
     guid: bbcfe9cc62dd55c42b008e5f76c9f0a6
   - enabled: 1
     path: Assets/Scenes/CleanFilter/Wrench Game.unity
     guid: e9f5386fac9864a5a9f4d6c4073d553d
+  - enabled: 1
+    path: Assets/Scenes/AsteroidTwa.unity
+    guid: 1e8b55820fde16a4ab8c71a58103a941
+  - enabled: 1
+    path: Assets/Scenes/WireGameFolder/WireGame.unity
+    guid: be11aeb40401448459280f81bb4fb41d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

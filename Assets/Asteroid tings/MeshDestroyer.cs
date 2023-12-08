@@ -15,6 +15,7 @@ public class MeshDestroy : MonoBehaviour
     public int MaxDestroyLevel = 3;
     public int Gemerald = 1;
     public GameObject gemPrefab;
+    public AudioSource audioSources;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class MeshDestroy : MonoBehaviour
     {
         if (collision.gameObject.name == "Hitter")
         {
+            audioSources.Play();
             DestroyMesh();
             if (Gemerald == 1)
             {

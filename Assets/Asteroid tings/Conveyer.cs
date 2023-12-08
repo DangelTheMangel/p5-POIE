@@ -7,13 +7,13 @@ namespace nickmaltbie.ScrollingShader
     /// </summary>
     public class ConveyerBelt : MonoBehaviour
     {
-        [SerializeField] private float conveyorSpeed;
-        private Material material;
+        //[SerializeField] private float conveyorSpeed;
+        //private Material material;
 
-        private void Update()
-        {
-            material.mainTextureOffset += new Vector2(0, 1) * conveyorSpeed * Time.deltaTime;
-        }
+        //private void Update()
+        //{
+            //material.mainTextureOffset += new Vector2(0, 1) * conveyorSpeed * Time.deltaTime;
+        //}
         /// <summary>
         /// How does this belt move objects, by pushing objects sitting
         /// on top of the belt or by "moving" the belt forward and pulling
@@ -43,7 +43,7 @@ namespace nickmaltbie.ScrollingShader
         /// </summary>
         [SerializeField]
         [Tooltip("Velocity of the conveyer belt.")]
-        private float velocity;
+        public float velocity;
 
         /// <summary>
         /// Direction that the conveyer belt pushes objects.
