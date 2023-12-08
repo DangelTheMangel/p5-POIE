@@ -4966,7 +4966,7 @@ Transform:
   m_GameObject: {fileID: 1403845491}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.46, y: 0.74, z: -60.42}
+  m_LocalPosition: {x: -8.46, y: 0.74, z: -61.77}
   m_LocalScale: {x: 3.1894922, y: 3.1894922, z: 3.1894922}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6788,7 +6788,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa6784e94b100c408053cf636d6b163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tunnelingVignetteController: {fileID: 0}
+  startButton: {fileID: 0}
+  infoText: {fileID: 0}
+  readingTXT: {fileID: 0}
+  maxNausisProcenticy: 200
+  meshRenderer: {fileID: 0}
   vignetteSize: 0
 --- !u!33 &1762348658
 MeshFilter:
