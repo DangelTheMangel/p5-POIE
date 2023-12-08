@@ -11712,7 +11712,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa6784e94b100c408053cf636d6b163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tunnelingVignetteController: {fileID: 0}
+  startButton: {fileID: 0}
+  infoText: {fileID: 0}
+  readingTXT: {fileID: 0}
+  maxNausisProcenticy: 200
+  meshRenderer: {fileID: 0}
   vignetteSize: 0
 --- !u!4 &5694645337777428181
 Transform:
