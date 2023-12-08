@@ -13,6 +13,8 @@ public class MeshDestroy : MonoBehaviour
     public int CutCascades = 1;
     public float ExplodeForce = 0;
     public int MaxDestroyLevel = 3;
+    public int Gemerald = 1;
+    public GameObject gemPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,16 @@ public class MeshDestroy : MonoBehaviour
         if (collision.gameObject.name == "Hitter")
         {
             DestroyMesh();
+            if (Gemerald == 1)
+            {
+                Instantiate(gemPrefab, transform.position, Quaternion.identity);
+                Gemerald = 0;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Jaxxie"))
+        {
+            Destroy(gameObject);
         }
     }
 
