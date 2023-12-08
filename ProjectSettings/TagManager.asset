@@ -4,12 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - RoomLight
   - Anchor
-  - Floor
-  - Target
-  - Jaxxie
-  - LyleBurt
-  - Racism
+  - SamplesInfoPanel
   layers:
   - Default
   - TransparentFX
@@ -17,9 +14,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Grab ignoreray
-  - PlayerLayer
-  - Bags
+  - 
+  - 
+  - 
   - 
   - 
   - 
