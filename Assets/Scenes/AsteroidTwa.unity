@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 8
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 143d9ebc7eab7d345b0a9f365fd529a8, type: 2}
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 122166867}
   m_IndirectSpecularColor: {r: 0.0014719184, g: 0.0013037919, b: 0.0015649094, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -159,16 +159,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2922292267430066035, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.063559
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922292267430066035, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.063559
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922292267430066035, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.063559
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922292267430066035, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.75
+      value: -1.35
       objectReference: {fileID: 0}
     - target: {fileID: 2922292267430066035, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 2922292267430066035, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5
+      value: -0.85
       objectReference: {fileID: 0}
     - target: {fileID: 2922292267430066035, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
       propertyPath: m_LocalRotation.w
@@ -197,6 +209,10 @@ PrefabInstance:
     - target: {fileID: 2922292267430066035, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997790582333999827, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3285073250795081121, guid: 9eef8adacb5d39d4aad7f8852fb89952, type: 3}
       propertyPath: m_IsActive
@@ -1004,13 +1020,13 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 470497249}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 955836244}
+        m_TargetAssemblyTypeName: TomarIsAHillbilly, Assembly-CSharp
+        m_MethodName: startAsteroidgame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2350,6 +2366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidspawner: {fileID: 1719792295}
   ConveyerBelt: {fileID: 1386813492}
+  Zackie: 0
   startButton: {fileID: 470497249}
   spawner: {fileID: 1719792293}
   timerText: {fileID: 809357491}
@@ -3073,13 +3090,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 7.43
-  m_Radius: 0.46
+  m_Height: 1.09
+  m_Radius: 0.08
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.86, z: 0}
 --- !u!114 &1334059563
 MonoBehaviour:
   m_ObjectHideFlags: 0
