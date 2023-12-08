@@ -14,6 +14,7 @@ public class TomarIsAHillbilly : MonoBehaviour
 
     public float Zackie = 0;
     public GameObject startButton;
+    public GameObject endButton;
     public GameObject spawner;
     public TMP_Text timerText;
     public TMP_Text score;
@@ -45,8 +46,10 @@ public class TomarIsAHillbilly : MonoBehaviour
         }
         else
         {
+            timerText.text = "Press the blue Button to exit and red to play agian";
             countdownTime = 0; // To prevent displaying negative values
             gameEnd();
+            endButton.SetActive(true);
             // Optionally, you can trigger an action when the countdown reaches zero
             // For example: TimerEnded();
         }
