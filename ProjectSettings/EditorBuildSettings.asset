@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/CleanFilter/CleanFilter.unity
     guid: 2d8f3fe7075d3474892d3c2a15d7de76
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Movement/Controller with all features.unity
     guid: 8a616b6c9ae6be348a0176657ac67824
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CleanFilter/Ball Game.unity
     guid: bbcfe9cc62dd55c42b008e5f76c9f0a6
   - enabled: 1
