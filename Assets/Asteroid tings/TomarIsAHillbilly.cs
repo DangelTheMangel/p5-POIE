@@ -12,7 +12,7 @@ public class TomarIsAHillbilly : MonoBehaviour
     public AsteroidSpawner asteroidspawner;
     public ConveyerBelt ConveyerBelt;
 
-    float Zackie = 0;
+    public float Zackie = 0;
     public GameObject startButton;
     public GameObject spawner;
     public TMP_Text timerText;
@@ -57,12 +57,14 @@ public class TomarIsAHillbilly : MonoBehaviour
         // Check if the collided object has a tag or specific characteristics (in this case, Object B)
         if (collision.gameObject.CompareTag("LyleBurt"))
         {
-            Zackie++;
+            Zackie += 1;
+            score.text = "" + Zackie;
+            Debug.Log("collected Gem");
             // Destroy the collided object (Object B)
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Racism"))
+        if (collision.gameObject.CompareTag("Racist"))
         {
             Destroy(collision.gameObject);
         }
