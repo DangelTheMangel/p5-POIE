@@ -49,7 +49,7 @@ public class TomarIsAHillbilly : MonoBehaviour
             timerText.text = "Press the blue Button to exit and red to play agian";
             countdownTime = 0; // To prevent displaying negative values
             gameEnd();
-            endButton.SetActive(true);
+            //endButton.SetActive(true);
             // Optionally, you can trigger an action when the countdown reaches zero
             // For example: TimerEnded();
         }
