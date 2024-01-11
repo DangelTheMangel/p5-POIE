@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Source: https://www.youtube.com/watch?v=VwGiwDLQ40A&ab_channel=DitzelGames
+// Github: https://gist.github.com/ditzel/73f4d1c9028cc3477bb921974f84ed56
+
 public class MeshDestroy : MonoBehaviour
 {
     private bool edgeSet = false;

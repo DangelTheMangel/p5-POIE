@@ -1,5 +1,8 @@
 using UnityEngine;
 
+// Source: https://www.youtube.com/watch?v=EypvlRUQwKA&ab_channel=NickMaltbie
+// Github location: https://github.com/nicholas-maltbie/Scrolling-Shaders-Example/blob/main/Assets/ScrollingShader/Scripts/ConveyerBelt.cs
+
 namespace nickmaltbie.ScrollingShader
 {
     /// <summary>
